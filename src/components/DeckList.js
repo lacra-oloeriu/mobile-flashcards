@@ -38,7 +38,7 @@ export class DeckList extends React.Component {
     let decks = this.state.decks;
     const items = Object.keys(decks).map(function (key) {
       console.log("key, value", key, decks[key]);
-      return <Text>{decks[key].title}</Text>;
+      return <Text key={key}>{decks[key].title}</Text>;
     });
 
     return (
