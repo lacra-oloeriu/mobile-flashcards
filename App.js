@@ -5,14 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { DeckList } from "./src/components/DeckList";
-import { CreateDeck, CreateDeckContainer } from "./src/components/CreateDeck";
+import { CreateDeckComponent } from "./src/components/CreateDeck";
 import { _getDecks, _getQuestions } from "./src/utils/_data";
 import { createStore } from "redux";
-import { connect, Provider } from "react-redux";
+import { Provider } from "react-redux";
 import reducer from "./src/data/reducers";
 
 const Tabs = createBottomTabNavigator();
-
 const store = createStore(reducer);
 
 
@@ -24,7 +23,7 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Tabs.Navigator>
             <Tabs.Screen name="Decks" component={DeckList} />
-            <Tabs.Screen name="AddDeck" component={CreateDeckContainer} />
+            <Tabs.Screen name="AddDeck" component={CreateDeckComponent} />
           </Tabs.Navigator>
         </NavigationContainer>
       </Provider>

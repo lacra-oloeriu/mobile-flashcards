@@ -4,8 +4,9 @@ import { ScreenContainer } from "./ScreenContainer";
 import { connect } from "react-redux";
 import { addDeck } from "../data/actions/decks";
 
-export function CreateDeck({ decks, dispatch, navigation }) {
+function CreateDeck({ decks, dispatch, navigation }) {
   console.log("createDeck", decks)
+  
   return (
     <ScreenContainer>
       <Text>Create deck component</Text>
@@ -15,7 +16,7 @@ export function CreateDeck({ decks, dispatch, navigation }) {
 
 
 
-export const CreateDeckContainer = connect((state) => ({ decks: state.decks }))(
+export const CreateDeckComponent = connect((state) => ({ decks:state.decks }))(
   CreateDeck
 );
 
