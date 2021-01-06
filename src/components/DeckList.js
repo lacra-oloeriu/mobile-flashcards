@@ -6,10 +6,18 @@ import { _getQuestions } from "../utils/_data";
 import { connect } from "react-redux";
 
 function DeckList({ decks, dispatch, navigation }) {
-  console.log("deckList", decks)
+  console.log("deckList", decks);
+
+  const deckList = [];
+  Object.keys(decks).forEach((key) => {
+    let deck = decks[key]
+    deckList.push(<Text key={key}>{deck.title}</Text>)
+  });
+
   return (
     <ScreenContainer>
       <Text>Deck list component</Text>
+      {deckList}
     </ScreenContainer>
   );
 }

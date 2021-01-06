@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { addDeck } from "../data/actions/decks";
 
 function CreateDeck({ decks, dispatch, navigation }) {
-  console.log("createDeck", decks)
   
   return (
     <ScreenContainer>
