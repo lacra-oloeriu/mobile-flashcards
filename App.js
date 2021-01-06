@@ -10,13 +10,19 @@ import { _getDecks, _getQuestions } from "./src/utils/_data";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./src/data/reducers";
+import middleware from './src/data/middleware'
 
 const Tabs = createBottomTabNavigator();
-const store = createStore(reducer);
+const store = createStore(reducer, middleware);
 
 
 
 export default class App extends React.Component {
+
+  componentDidMount(){
+    store.dispatch()
+  }
+
   render() {
     return (
       <Provider store={store}>
