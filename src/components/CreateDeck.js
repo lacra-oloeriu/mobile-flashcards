@@ -5,12 +5,16 @@ import { connect } from "react-redux";
 import { addDeck } from "../data/actions/decks";
 import { TextInput } from "react-native-gesture-handler";
 
+function submitCreateDeck({ dispatch, title, navigation }) {
+  
+  if (title) {
+    navigation.navigate("Decks")
+  } 
+}
+
 function CreateDeck({ decks, dispatch, navigation }) {
   const [deckTitle, setDeckTitle] = useState("");
 
-  const [count, setCount] = useState(0);
-
-  console.log(deckTitle);
   return (
     <ScreenContainer>
       <Text>New deck title</Text>
@@ -21,8 +25,10 @@ function CreateDeck({ decks, dispatch, navigation }) {
         }}
       />
       <Text>{deckTitle}</Text>
-      <Text>You clicked {count} times</Text>
-      <Button title="Press me" onPress={() => setCount(count + 1)} />
+      <Button
+        title="Create"
+        onPress={() => submitCreateDeck({ dispatch, title: deckTitle, navigation })}
+      />
     </ScreenContainer>
   );
 }
