@@ -7,21 +7,25 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { DeckList } from "./src/components/DeckList";
 import { CreateDeck } from "./src/components/CreateDeck";
 import { _getDecks, _getQuestions } from "./src/utils/_data";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./src/data/reducers";
 
 const Tabs = createBottomTabNavigator();
 
-export default class App extends React.Component {
-  
+const store = createStore(reducer);
 
+export default class App extends React.Component {
   render() {
-    console.log(this.state);
     return (
-      <NavigationContainer>
-        <Tabs.Navigator>
-          <Tabs.Screen name="Decks" component={DeckList} />
-          <Tabs.Screen name="AddDeck" component={CreateDeck} />
-        </Tabs.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Tabs.Navigator>
+            <Tabs.Screen name="Decks" component={DeckList} />
+            <Tabs.Screen name="AddDeck" component={CreateDeck} />
+          </Tabs.Navigator>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }

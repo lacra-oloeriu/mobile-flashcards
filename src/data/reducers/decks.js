@@ -1,6 +1,6 @@
 import { RECEIVE_DECKS, ADD_DECK } from "../actions/decks";
 
-export default function decks(state = {}, action) {
+function decks(state = {}, action) {
   switch (action.type) {
     case RECEIVE_DECKS:
       return {
@@ -16,3 +16,5 @@ export default function decks(state = {}, action) {
       return state;
   }
 }
+
+export default decks
