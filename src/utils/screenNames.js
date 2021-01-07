@@ -1,4 +1,5 @@
-export const SCREEN_DECK_LIST = "SCREEN_DECK_LIST";
-export const SCREEN_DECK_DETAILS = "SCREEN_DECK_DETAILS";
-export const SCREEN_HOME = "SCREEN_HOME";
-export const SCREEN_ADD_DECK = "SCREEN_ADD_DECK";
+export const SCREEN_DECK_LIST = "DeckList";
+export const SCREEN_DECK_DETAILS = "DeckDetails";
+export const SCREEN_HOME = "Home";
+export const SCREEN_ADD_DECK = "AddDeck";
+export const SCREEN_CARD_CREATE = "CreateCard";

@@ -1,17 +1,25 @@
 import React from "react";
 import { ScreenContainer } from "./ScreenContainer";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { connect } from "react-redux";
+import { SCREEN_CARD_CREATE } from "../utils/screenNames";
 
 function deckDetails({ decks, route, navigation }) {
   const { deckId } = route.params;
   const deck = decks[deckId];
 
-  console.log("Details fror ", deckId);
-
   return (
     <ScreenContainer>
-      <Text>Deck details: {deck.title}</Text>
+      <Text>Deck: {deck.title}</Text>
+      <Text>{deck.questions.length} decks</Text>
+      <Button
+        title="Add card"
+        onPress={() => {
+          navigation.navigate(SCREEN_CARD_CREATE,{deckId});
+        }}
+      />
+      <Button title="Start Quiz" />
+      <Button title="Delete Deck" />
     </ScreenContainer>
   );
 }

@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { DeckListComponent } from "./src/components/DeckList";
 import { DeckDetails } from "./src/components/DeckDetails";
 import { CreateDeckComponent } from "./src/components/DeckCreate";
+import { CardCreate } from "./src/components/CardCreate";
 import { _getDecks, _getQuestions } from "./src/utils/_data";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -14,7 +15,7 @@ import reducer from "./src/data/reducers";
 import middleware from "./src/data/middleware";
 import { handleInitialData } from "./src/data/actions/shared";
 
-import { SCREEN_DECK_LIST, SCREEN_DECK_DETAILS } from "./src/utils/screenNames";
+import { SCREEN_DECK_LIST, SCREEN_DECK_DETAILS, SCREEN_CARD_CREATE } from "./src/utils/screenNames";
 
 const Tabs = createBottomTabNavigator();
 const store = createStore(reducer, middleware);
@@ -25,6 +26,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name={SCREEN_DECK_LIST} component={DeckListComponent} />
       <HomeStack.Screen name={SCREEN_DECK_DETAILS} component={DeckDetails} />
+      <HomeStack.Screen name = {SCREEN_CARD_CREATE} component={CardCreate}/>
     </HomeStack.Navigator>
   );
 }
