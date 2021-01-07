@@ -6,9 +6,9 @@ import { addDeck } from "../data/actions/decks";
 import { TextInput } from "react-native-gesture-handler";
 import { v4 as uuidv4 } from "uuid";
 import { handleAddDeck } from "../data/actions/decks";
-import { SCREEN_DECK_LIST } from "../../App";
+import { SCREEN_DECK_LIST } from "../utils/screenNames";
 
-function CreateDeck({ decks, dispatch, navigation }) {
+function DeckCreate({ decks, dispatch, navigation }) {
   const [deckTitle, setDeckTitle] = useState("");
 
   let myRef = React.createRef();
@@ -43,5 +43,5 @@ function CreateDeck({ decks, dispatch, navigation }) {
 }
 
 export const CreateDeckComponent = connect((state) => ({ decks: state.decks }))(
-  CreateDeck
+  DeckCreate
 );

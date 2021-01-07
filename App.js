@@ -5,7 +5,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { DeckListComponent } from "./src/components/DeckList";
-import { CreateDeckComponent } from "./src/components/CreateDeck";
+import { DeckDetails } from "./src/components/DeckDetails";
+import { CreateDeckComponent } from "./src/components/DeckCreate";
 import { _getDecks, _getQuestions } from "./src/utils/_data";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -13,28 +14,17 @@ import reducer from "./src/data/reducers";
 import middleware from "./src/data/middleware";
 import { handleInitialData } from "./src/data/actions/shared";
 
-export const SCREEN_DECK_LIST = "SCREEN_DECK_LIST";
-export const SCREEN_DECK_DETAILS = "SCREEN_DECK_DETAILS";
-export const SCREEN_HOME = "SCREEN_HOME";
-export const SCREEN_ADD_DECK = "SCREEN_ADD_DECK";
+import { SCREEN_DECK_LIST, SCREEN_DECK_DETAILS } from "./src/utils/screenNames";
 
 const Tabs = createBottomTabNavigator();
 const store = createStore(reducer, middleware);
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
 
 const HomeStack = createStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name={SCREEN_DECK_LIST} component={DeckListComponent} />
-      <HomeStack.Screen name={SCREEN_DECK_DETAILS} component={DetailsScreen} />
+      <HomeStack.Screen name={SCREEN_DECK_DETAILS} component={DeckDetails} />
     </HomeStack.Navigator>
   );
 }

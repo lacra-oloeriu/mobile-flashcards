@@ -4,14 +4,22 @@ import { ScreenContainer } from "./ScreenContainer";
 import { _getDecks } from "../utils/_data";
 import { _getQuestions } from "../utils/_data";
 import { connect } from "react-redux";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { SCREEN_DECK_DETAILS } from "../utils/screenNames";
+
+function handleTouch(navigation, deckId) {
+  navigation.navigate(SCREEN_DECK_DETAILS, { deckId });
+}
 
 function DeckList({ decks, dispatch, navigation }) {
-  console.log("deckList", decks);
-
   const deckList = [];
   Object.keys(decks).forEach((key) => {
-    let deck = decks[key]
-    deckList.push(<Text key={key}>{deck.title}</Text>)
+    let deck = decks[key];
+    deckList.push(
+      <TouchableOpacity onPress={() => handleTouch(navigation, key)}>
+        <Text key={key}>{deck.title}</Text>
+      </TouchableOpacity>
+    );
   });
 
   return (
