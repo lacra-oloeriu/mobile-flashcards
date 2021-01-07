@@ -6,6 +6,7 @@ import { addDeck } from "../data/actions/decks";
 import { TextInput } from "react-native-gesture-handler";
 import { v4 as uuidv4 } from "uuid";
 import { handleAddDeck } from "../data/actions/decks";
+import { SCREEN_DECK_LIST } from "../../App";
 
 function CreateDeck({ decks, dispatch, navigation }) {
   const [deckTitle, setDeckTitle] = useState("");
@@ -21,7 +22,7 @@ function CreateDeck({ decks, dispatch, navigation }) {
       myRef.current.clear();
       setDeckTitle("");
 
-      navigation.navigate("Decks");
+      navigation.navigate(SCREEN_DECK_LIST);
     }
   }
 
