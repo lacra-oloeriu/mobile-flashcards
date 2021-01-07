@@ -16,8 +16,8 @@ function DeckList({ decks, dispatch, navigation }) {
   Object.keys(decks).forEach((key) => {
     let deck = decks[key];
     deckList.push(
-      <TouchableOpacity onPress={() => handleTouch(navigation, key)}>
-        <Text key={key}>{deck.title}</Text>
+      <TouchableOpacity key={key} onPress={() => handleTouch(navigation, key)}>
+        <Text>{deck.title}</Text>
       </TouchableOpacity>
     );
   });
