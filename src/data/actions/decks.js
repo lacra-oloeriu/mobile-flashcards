@@ -1,7 +1,8 @@
-import { saveDeck } from "../../utils/api";
+import { saveDeck, updateDeck } from "../../utils/api";
 
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
 export const ADD_DECK = "ADD_DECK";
+export const DECK_APEND_QUESTION_ID = "DECK_APEND_DECK";
 
 export function receiveDecks(decks) {
   return {
@@ -17,9 +18,28 @@ export function addDeck(deck) {
   };
 }
 
-export function handleAddDeck (title, deckId){
-    return (dispatch, getState)=>{
-        return saveDeck({title, deckId})
-            .then((deck)=>dispatch(addDeck(deck)))
-    }
+export function deckAppendQuestionId(deckId, questionId) {
+  return {
+    type: DECK_APEND_QUESTION_ID,
+    deckId,
+    questionId,
+  };
+}
+
+export function handleAddDeck(title, deckId) {
+  return (dispatch, getState) => {
+    return saveDeck({ title, deckId }).then((deck) => dispatch(addDeck(deck)));
+  };
+}
+
+export function handlDeckAppendQuestionId(deckId, questionId) {
+  return (dispatch, getState) => {
+    new Promise((res, rej) => {
+      dispatch(deckAppendQuestionId(deckId, questionId));
+      let decks = getState()["decks"];
+      console.log("Decks => " + JSON.stringify(decks));
+      updateDeck(decks);
+      res("ok");
+    });
+  };
 }

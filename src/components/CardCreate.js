@@ -4,8 +4,10 @@ import { Button, Text } from "react-native";
 import { connect } from "react-redux";
 import { TextInput } from "react-native-gesture-handler";
 import { v4 as uuidv4 } from "uuid";
+import { handleAddQuestion } from "../data/actions/questions";
+import { handlDeckAppendQuestionId } from "../data/actions/decks";
 
-function cardCreate({ route, navigation }) {
+function cardCreate({ dispatch, route, navigation }) {
   const { deckId } = route.params;
   const [questionText, setQuestionText] = useState("");
   const [answerText, setAnswerText] = useState("");
@@ -15,8 +17,10 @@ function cardCreate({ route, navigation }) {
 
   function submitCreateDeck() {
     if (questionText && answerText) {
-      let id = uuidv4();
-      
+      let questionId = uuidv4();
+
+      dispatch(handleAddQuestion(deckId, questionText, answerText, questionId));
+      dispatch(handlDeckAppendQuestionId(deckId, questionId));
     }
   }
 
