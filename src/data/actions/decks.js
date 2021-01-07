@@ -37,7 +37,7 @@ export function handlDeckAppendQuestionId(deckId, questionId) {
     new Promise((res, rej) => {
       dispatch(deckAppendQuestionId(deckId, questionId));
       let decks = getState()["decks"];
-      console.log("Decks => " + JSON.stringify(decks));
+      //console.log("Decks => " + JSON.stringify(decks));
       updateDeck(decks);
       res("ok");
     });

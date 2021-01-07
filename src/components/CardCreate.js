@@ -21,6 +21,13 @@ function cardCreate({ dispatch, route, navigation }) {
 
       dispatch(handleAddQuestion(deckId, questionText, answerText, questionId));
       dispatch(handlDeckAppendQuestionId(deckId, questionId));
+
+      questionRef.current.clear();
+      setQuestionText("")
+      answerRef.current.clear();
+      setAnswerText("")
+
+      navigation.goBack()
     }
   }
 

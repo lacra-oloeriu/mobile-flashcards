@@ -1,4 +1,8 @@
-import { RECEIVE_DECKS, ADD_DECK } from "../actions/decks";
+import {
+  RECEIVE_DECKS,
+  ADD_DECK,
+  DECK_APEND_QUESTION_ID,
+} from "../actions/decks";
 
 function decks(state = {}, action) {
   switch (action.type) {
@@ -12,9 +16,17 @@ function decks(state = {}, action) {
         ...state,
         [action.deck.id]: action.deck,
       };
+    case DECK_APEND_QUESTION_ID:
+      return {
+        ...state,
+        [action.deckId]: {
+          ...state[action.deckId],
+          questions: state[action.deckId].questions.concat([action.questionId]),
+        },
+      };
     default:
       return state;
   }
 }
 
-export default decks
+export default decks;

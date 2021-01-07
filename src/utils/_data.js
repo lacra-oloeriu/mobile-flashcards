@@ -131,8 +131,7 @@ export function _saveNewDeck(deck) {
 }
 
 export function _updateDeck(decks) {
-  //const { deckId, questionId, decks } = info
-  console.log("_updateDeck -> " + JSON.stringify(decks));
+  //console.log("_updateDeck -> " + JSON.stringify(decks));
   return new Promise((res, rej) => {
     AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
   });
