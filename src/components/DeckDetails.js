@@ -2,7 +2,7 @@ import React from "react";
 import { ScreenContainer } from "./ScreenContainer";
 import { View, Text, Button } from "react-native";
 import { connect } from "react-redux";
-import { SCREEN_CARD_CREATE } from "../utils/screenNames";
+import { SCREEN_CARD_CREATE, SCREEN_QUIZ_PERFORM } from "../utils/screenNames";
 
 function deckDetails({ decks, route, navigation }) {
   const { deckId } = route.params;
@@ -15,10 +15,15 @@ function deckDetails({ decks, route, navigation }) {
       <Button
         title="Add card"
         onPress={() => {
-          navigation.navigate(SCREEN_CARD_CREATE,{deckId});
+          navigation.navigate(SCREEN_CARD_CREATE, { deckId });
         }}
       />
-      <Button title="Start Quiz" />
+      <Button
+        title="Start Quiz"
+        onPress={() => {
+          navigation.navigate(SCREEN_QUIZ_PERFORM, { deckId });
+        }}
+      />
       <Button title="Delete Deck" />
     </ScreenContainer>
   );
