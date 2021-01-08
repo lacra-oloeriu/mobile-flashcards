@@ -17,7 +17,9 @@ function DeckList({ decks, dispatch, navigation }) {
     let deck = decks[key];
     deckList.push(
       <TouchableOpacity key={key} onPress={() => handleTouch(navigation, key)}>
+        <Text>-----</Text>
         <Text>{deck.title}</Text>
+        <Text>({deck.questions.length} cards )</Text>
       </TouchableOpacity>
     );
   });
