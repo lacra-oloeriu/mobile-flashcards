@@ -6,7 +6,7 @@ import { addDeck } from "../data/actions/decks";
 import { TextInput } from "react-native-gesture-handler";
 import { v4 as uuidv4 } from "uuid";
 import { handleAddDeck } from "../data/actions/decks";
-import { SCREEN_DECK_LIST } from "../utils/screenNames";
+import { SCREEN_DECK_DETAILS } from "../utils/screenNames";
 
 function DeckCreate({ decks, dispatch, navigation }) {
   const [deckTitle, setDeckTitle] = useState("");
@@ -15,14 +15,14 @@ function DeckCreate({ decks, dispatch, navigation }) {
 
   function submitCreateDeck() {
     if (deckTitle) {
-      let uuid = uuidv4();
+      let deckId = uuidv4();
 
-      dispatch(handleAddDeck(deckTitle, uuid));
+      dispatch(handleAddDeck(deckTitle, deckId));
 
       myRef.current.clear();
       setDeckTitle("");
 
-      navigation.navigate(SCREEN_DECK_LIST);
+      navigation.navigate(SCREEN_DECK_DETAILS, { deckId });
     }
   }
 

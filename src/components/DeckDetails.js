@@ -6,8 +6,15 @@ import { SCREEN_CARD_CREATE, SCREEN_QUIZ_PERFORM } from "../utils/screenNames";
 
 function deckDetails({ decks, route, navigation }) {
   const { deckId } = route.params;
-  const deck = decks[deckId];
+  let deck = decks[deckId];
+  if (deck === undefined) {
+    deck = {
+      title: "Creating deck pending",
+      questions: [],
+    };
+  }
 
+  console.log("Deck details: ", deckId);
   return (
     <ScreenContainer>
       <Text>Deck: {deck.title}</Text>
