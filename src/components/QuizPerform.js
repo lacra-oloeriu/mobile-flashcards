@@ -34,10 +34,16 @@ function quizPerform({ decks, questions, route, navigation }) {
       setIncorectAnswers(incorrect);
     }
     if (index === totalQuestions - 1) {
+      setIndex(0);
+      setShowAnswer(false);
+      setCorrectAnswers(0);
+      setIncorectAnswers(0);
+
       navigation.navigate(SCREEN_QUIZ_RESULTS, {
         deckTitle: deck.title,
         correctAnswers: correct,
         incorrectAnswers: incorrect,
+        deckId,
       });
     } else {
       let newIndex = index + 1;

@@ -25,6 +25,7 @@ import {
   SCREEN_CARD_CREATE,
   SCREEN_QUIZ_PERFORM,
   SCREEN_QUIZ_RESULTS,
+  SCREEN_HOME,
 } from "./src/utils/screenNames";
 
 const Tabs = createBottomTabNavigator();
@@ -53,7 +54,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <NavigationContainer>
           <Tabs.Navigator>
-            <Tabs.Screen name="Home" component={HomeStackScreen} />
+            <Tabs.Screen name={SCREEN_HOME} component={HomeStackScreen} />
             <Tabs.Screen name="AddDeck" component={CreateDeckComponent} />
           </Tabs.Navigator>
         </NavigationContainer>
