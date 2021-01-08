@@ -11,7 +11,7 @@ function deckDetails({ decks, route, navigation }) {
   return (
     <ScreenContainer>
       <Text>Deck: {deck.title}</Text>
-      <Text>{deck.questions.length} decks</Text>
+      <Text>{deck.questions.length} cards</Text>
       <Button
         title="Add card"
         onPress={() => {
@@ -24,7 +24,6 @@ function deckDetails({ decks, route, navigation }) {
           navigation.navigate(SCREEN_QUIZ_PERFORM, { deckId });
         }}
       />
-      <Button title="Delete Deck" />
     </ScreenContainer>
   );
 }

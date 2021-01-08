@@ -17,6 +17,8 @@ function quizPerform({ decks, questions, route, navigation }) {
   const questionId = deck.questions[index];
   const question = questions[questionId];
 
+  const remainingQuestions = totalQuestions - index;
+
   function submitShowAnswer() {
     setShowAnswer(true);
   }
@@ -79,6 +81,7 @@ function quizPerform({ decks, questions, route, navigation }) {
       <Text>
         Progress: {index + 1} / {totalQuestions}
       </Text>
+      <Text>Remaining questions to answer: {remainingQuestions}</Text>
       <Text>Question: {question.questionText}</Text>
       {textAnswer}
       <Text>------</Text>
