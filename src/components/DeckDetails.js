@@ -30,6 +30,7 @@ function deckDetails({ decks, route, navigation }) {
         onPress={() => {
           navigation.navigate(SCREEN_QUIZ_PERFORM, { deckId });
         }}
+        disabled={!deck.questions.length} 
       />
     </ScreenContainer>
   );
