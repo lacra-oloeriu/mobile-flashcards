@@ -12,6 +12,8 @@ import { CardCreate } from "./src/components/CardCreate";
 import { QuizPerform } from "./src/components/QuizPerform";
 import { QuizResults } from "./src/components/QuizResults";
 
+import {setLocalNotification} from './src/utils/notificationHelper'
+
 import { _getDecks, _getQuestions } from "./src/utils/_data";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -47,6 +49,7 @@ function HomeStackScreen() {
 export default class App extends React.Component {
   componentDidMount() {
     store.dispatch(handleInitialData());
+    setLocalNotification()
   }
 
   render() {
