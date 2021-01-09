@@ -68,8 +68,6 @@ export function setLocalNotification() {
             let next5Secconds = new Date();
             next5Secconds.setSeconds(next5Secconds.getSeconds + 5);
 
-            console.log("Sheduling againg");
-
             Notifications.scheduleNotificationAsync(repeatsEvryDayButNotPossibleToSetTime());
 
             AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true)).then(

@@ -1,18 +1,19 @@
 import React from "react";
 import { ScreenContainer } from "./ScreenContainer";
-import { View, Text, Button } from "react-native";
-import { connect } from "react-redux";
+import { Text, Button } from "react-native";
 import { SCREEN_DECK_DETAILS, SCREEN_QUIZ_PERFORM } from "../utils/screenNames";
+
+import { clearLocalNotification , setLocalNotification} from "../utils/notificationHelper";
 
 export function QuizResults({ route, navigation }) {
   const { deckTitle, correctAnswers, incorrectAnswers, deckId } = route.params;
-  console.log(
-    "quizRezults component: ",
-    deckTitle,
-    correctAnswers,
-    incorrectAnswers
-  );
   const totalQuestions = correctAnswers + incorrectAnswers;
+
+  //reset notifications and sent them again for tommorow
+  clearLocalNotification().then(() => {
+    setLocalNotification();
+  });
+
   return (
     <ScreenContainer>
       <Text>QuizRezults</Text>
